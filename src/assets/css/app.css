@@ -1,0 +1,41 @@
+@import '~antd/dist/antd.css';
+
+/* Main CSS stylesheet */
+html,
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+}
+
+@media screen and (prefers-color-scheme: light), screen and (prefers-color-scheme: no-preference) {
+  /* Light mode */
+  body {
+    color: #000;
+    background-color: #fff;
+  }
+}
+
+
+
+h1 {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 200;
+}
+
+#login-card {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#upload-button {
+  white-space: normal;
+  min-height: 32px;
+  height: auto;
+}
+
