@@ -1,14 +1,14 @@
-# Install all stuff
+## Install all stuff
 from repo root
 ```
 yarn install
 ```
-# Run
+## Run
 from repo root
 ```
 yarn start
 ```
-# Production
+## Production
 from repo root
 ```
 yarn build
