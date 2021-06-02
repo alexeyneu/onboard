@@ -1,9 +1,9 @@
 import React from "react";
-import Login from "./Login";
+import Onboard from "./Onboard";
 
 
 function App() {
-  return (<Login />);
+  return (<Onboard />);
 
 }
 

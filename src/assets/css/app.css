@@ -12,6 +12,8 @@ body {
   font-size: 16px;
 }
 
+
+
 @media screen and (prefers-color-scheme: light), screen and (prefers-color-scheme: no-preference) {
   /* Light mode */
   body {
@@ -28,7 +30,7 @@ h1 {
   font-weight: 200;
 }
 
-#login-card {
+#onboard-card {
   width: 600px;
   margin: 0 auto;
 }
@@ -39,3 +41,12 @@ h1 {
   height: auto;
 }
 
+.ant-input:hover {
+    border-color: #0000a0;
+    outline-color: #1000a0;
+}
+
+.ant-input:focus {
+    border-color: lime;
+    box-shadow: 0 0 7px lime;
+}
