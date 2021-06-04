@@ -13,7 +13,7 @@ function Onboard() {
           title="Contract administration"
           avatar={{ icon: <CloudUploadOutlined /> }}
         />
-        <Card title="add new token or ref address" id="onboard-card">
+        <Card title="add new token or project " id="onboard-card">
           <BoardForm />
         </Card>
       </Content>
