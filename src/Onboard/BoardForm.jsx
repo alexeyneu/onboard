@@ -22,34 +22,20 @@ function BoardForm() {
   checkAccount();
   }, []);  
  
-/*async function activate() {
-  if (window.ethereum) {
-    try {
-      await window.ethereum.request({ method: 'eth_requestAccounts' });
-      checkAccount();
-    } catch (err) {
-      console.log('user did not add account...', err);
-    }
-  }
-}*/
+
 
 function activate() {
-   // setBnstate(!false);
-    window.ethereum.request({ method: 'eth_requestAccounts' }).catch((error,bnstate) => {
+    window.ethereum.request({ method: 'eth_requestAccounts' })
+    .then((conngoes)=>{setConngoes(!false);})
+    .catch((error,bnstate) => {
+      setBnstate(false);    
       if (error.code === 4001) {
-  //      setConngoes(!false);
- //       setBnstate(conngoes);
-         setBnstate(false);
- 
-
         // EIP-1193 userRejectedRequest error
         console.log('Please connect to MetaMask.');
       } else {
         console.error(error);
       }
     });
- //   setConngoes(!false);
-  //  setBnstate(conngoes);
 }
 
 async function checkAccount() {
@@ -57,15 +43,12 @@ async function checkAccount() {
   setWeb3(web3);
   const accounts = await web3.eth.getAccounts();
   setAccount(accounts[0]);
- // if (accounts.length > 0) setConngoes(!false);
 
-//  if (web3.eth.net.isListening()) setConngoes(!false);
 }
 
   const onconnect = (bnstate)=>{
     setBnstate(!false);
     activate();
- //   setBnstate(conngoes);
   }
   const onFinish = (token,proaddr)=>{
   };
@@ -96,7 +79,7 @@ async function checkAccount() {
       </Form.Item>
       {/* Submit */}
       <Form.Item label=" " colon={false}>
-        <Button type="primary" /*disabled={bnstate}*/ htmlType="submit">
+        <Button type="primary" disabled={!conngoes} htmlType="submit">
           <LoginOutlined />
           Submit and sign
         </Button>
