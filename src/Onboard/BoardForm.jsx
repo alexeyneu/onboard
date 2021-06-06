@@ -67,7 +67,7 @@ async function checkAccount() {
 
       {/* token and ref */}
       <Form.Item label=" " colon={false}>
-        <Button htmlType="button" disabled={bnstate} size="small" onClick={onconnect}>
+        <Button htmlType="button" type="primary" id="turf-button" disabled={bnstate} shape="round" size="small" onClick={onconnect}>
           connetct to metamask
         </Button>
       </Form.Item>
