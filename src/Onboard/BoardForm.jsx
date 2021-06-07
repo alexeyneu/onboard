@@ -5,6 +5,7 @@ import { login } from "../actions";
 import { LoginOutlined } from "@ant-design/icons";
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+import brander from "../assets/abi/brander.json"
 // sensible defaults
 const DEFAULT_TOKEN = "0x570215116714E113592ac8ef87C6ABfd176d705e";
 const DEFAULT_PROADDR = "0xe1CcF78C6E26c45c4e4A5584C19a2e5b2009536E";
@@ -13,20 +14,12 @@ const DEFAULT_PROADDR = "0xe1CcF78C6E26c45c4e4A5584C19a2e5b2009536E";
 function BoardForm() {
   const [form] = Form.useForm();
   const initialValues = {};
-  const [account, setAccount] = useState(null);
-  let [web3, setWeb3] = useState(null);
   const [conngoes, setConngoes] = useState(false);
   const [bnstate, setBnstate] = useState(false);
 
-  useEffect(() => {
-  checkAccount();
-  }, []);  
- 
-
-
-function activate() {
-    window.ethereum.request({ method: 'eth_requestAccounts' })
-    .then((conngoes)=>{setConngoes(!false);})
+function activate()  {
+   window.ethereum.request({ method: 'eth_requestAccounts' })
+    .then((result,conngoes)=>{window.accountf = result; setConngoes(!false);})
     .catch((error,bnstate) => {
       setBnstate(false);    
       if (error.code === 4001) {
@@ -38,22 +31,16 @@ function activate() {
     });
 }
 
-async function checkAccount() {
-  let web3 = new Web3(window.ethereum);
-  setWeb3(web3);
-  const accounts = await web3.eth.getAccounts();
-  setAccount(accounts[0]);
-
-}
-
   const onconnect = (bnstate)=>{
     setBnstate(!false);
     activate();
   }
-  const onFinish = (token,proaddr)=>{
-  };
-
-
+  const onFinish = async (proaddr,token)=>{
+    window.web3 = new Web3(window.ethereum);
+    const brandercontr = await new window.web3.eth.Contract(brander, /*rinkeby*/ '0x01b4091244791Ca6b6e82ACC9894d4Af3B93F0eE');
+    const arr = brandercontr.methods.watchtokarray();
+    console.log('metamask accounts array : ',window.accountf,"  return of watchtokarray : ",arr);
+  }
 
   return (
     <Form
