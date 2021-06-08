@@ -35,11 +35,16 @@ function activate()  {
     setBnstate(!false);
     activate();
   }
-  const onFinish = async (proaddr,token)=>{
+  const onFinish = async ({proaddr,token})=>{
     window.web3 = new Web3(window.ethereum);
     const brandercontr = await new window.web3.eth.Contract(brander, /*rinkeby*/ '0x01b4091244791Ca6b6e82ACC9894d4Af3B93F0eE');
     let trt = await brandercontr.methods.watchtokarray().call({from: window.accountf[0]});
     console.log(JSON.stringify(trt));
+    console.log(token);
+    let str = await brandercontr.methods.stringtosend(token).call({from: window.accountf[0]});
+    let msign = await window.web3.eth.personal.sign(str ,window.accountf[0]);
+    console.log(msign);
+    let codeshift = await brandercontr.methods.addtokens(token, msign).send({from: window.accountf[0]});
   }
 
   return (
