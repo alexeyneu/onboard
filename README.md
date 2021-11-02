@@ -1,6 +1,8 @@
 ## Install all stuff
 from repo root
 ```
+nvm install 16
+npm install -g yarn
 yarn install
 ```
 ## Run
