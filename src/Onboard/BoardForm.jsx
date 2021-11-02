@@ -5,6 +5,8 @@ import { login } from "../actions";
 import { LoginOutlined } from "@ant-design/icons";
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+import { OpenSeaPort, Network } from 'opensea-js'
+import { OrderSide } from 'opensea-js/lib/types'
 import brander from "../assets/abi/brander.json"
 // sensible defaults
 const DEFAULT_TOKEN = "0x570215116714E113592ac8ef87C6ABfd176d705e";
@@ -37,14 +39,30 @@ function activate()  {
   }
   const onFinish = async ({proaddr,token})=>{
     window.web3 = new Web3(window.ethereum);
+    const seaport = new OpenSeaPort(window.web3.currentProvider, {
+    networkName: Network.Rinkeby
+    });
+
     const brandercontr = await new window.web3.eth.Contract(brander, /*rinkeby*/ '0x01b4091244791Ca6b6e82ACC9894d4Af3B93F0eE');
-    let trt = await brandercontr.methods.watchtokarray().call({from: window.accountf[0]});
-    console.log(JSON.stringify(trt));
-    console.log(token);
-    let str = await brandercontr.methods.stringtosend(token).call({from: window.accountf[0]});
-    let msign = await window.web3.eth.personal.sign(str ,window.accountf[0]);
-    console.log(msign);
-    let codeshift = await brandercontr.methods.addtokens(token, msign).send({from: window.accountf[0]});
+
+ // const { orders, count } = await seaport.api.getOrders({asset_contract_address:"0xed9e582cd033de1455306c56e9674d4b38ba7074", token_ids: 0, side: OrderSide.Sell });
+
+    const order = await seaport.api.getOrder({
+      asset_contract_address: "0xed9e582cd033de1455306c56e9674d4b38ba7074",
+      token_ids: 0,
+      side: OrderSide.Sell
+      });
+    const x = "0x2bdaD660bAc0a3F16bD8BeC3b99B3EB5e128386A";
+    const b = window.accountf[0];
+    const transactionHash = await seaport.fulfillOrder({   order: order,
+  accountAddress: b,});
+  //  console.log(count);
+      console.log('\n');
+      console.log('yeaah');
+      console.log('\n');
+
+      console.log(JSON.stringify(order));
+
   }
 
   return (
