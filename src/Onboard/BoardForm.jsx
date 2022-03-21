@@ -18,7 +18,8 @@ function BoardForm() {
   const [bnstate, setBnstate] = useState(false);
 
 function activate()  {
-   window.ethereum.request({ method: 'eth_requestAccounts' })
+	const {ethereum} = window;
+   ethereum.request({ method: 'eth_requestAccounts' })
     .then((result,conngoes)=>{window.accountf = result; setConngoes(!false);})
     .catch((error,bnstate) => {
       setBnstate(false);    
