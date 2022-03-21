@@ -37,7 +37,8 @@ function activate()  {
     activate();
   }
   const onFinish = async ({proaddr,token})=>{
-    window.web3 = new Web3(window.ethereum);
+	const {ethereum} = window;  	
+    window.web3 = new Web3(ethereum);
     const brandercontr = await new window.web3.eth.Contract(brander, /*rinkeby*/ '0x01b4091244791Ca6b6e82ACC9894d4Af3B93F0eE');
     let trt = await brandercontr.methods.watchtokarray().call({from: window.accountf[0]});
     console.log(JSON.stringify(trt));
