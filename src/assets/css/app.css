@@ -31,7 +31,7 @@ h1 {
 }
 
 #onboard-card {
-  width: 600px;
+  width: 790px;
   margin: 0 auto;
 }
 
@@ -55,4 +55,5 @@ h1 {
 #turf-button {
   background-color: lime;
   border-color: lime; 
+  font-weight: 570;
 }

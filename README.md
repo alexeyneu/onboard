@@ -1,6 +1,14 @@
 ## Install all stuff
-from repo root
+from repo root  
+for arch linux:  
 ```
+sudo su 
+source /usr/share/nvm/nvm.sh
+nvm install 16
+exit
+source /usr/share/nvm/nvm.sh
+nvm use 16
+sudo npm install -g yarn
 yarn install
 ```
 ## Run

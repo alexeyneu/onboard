@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Layout, PageHeader } from "antd";
-import { CloudUploadOutlined } from "@ant-design/icons";
+import { DashboardTwoTone } from "@ant-design/icons";
 import BoardForm from "./BoardForm";
 
 const { Content } = Layout;
@@ -11,9 +11,9 @@ function Onboard() {
       <Content style={{ padding: "0 50px" }}>
         <PageHeader
           title="Contract administration"
-          avatar={{ icon: <CloudUploadOutlined /> }}
+          avatar={{ icon: <DashboardTwoTone /> }}
         />
-        <Card title="add new token or project " id="onboard-card">
+        <Card title="My Investment" id="onboard-card">
           <BoardForm />
         </Card>
       </Content>
