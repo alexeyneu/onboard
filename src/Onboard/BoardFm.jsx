@@ -16,26 +16,6 @@ const DEFAULT_PROADDR = "950";
 function BoardForm(stuff) {
   const [form] = Form.useForm();
   const initialValues = {};
-  const [bnstate, setBnstate] = useState(false);
-  function activate() {
-  	const {ethereum} = window;
-    ethereum.request({ method: 'eth_requestAccounts' })
-      .then((result)=>{window.accountf = result; stuff.setConngoes(!false);})
-      .catch((error) => {
-        setBnstate(false);    
-        if (error.code === 4001) {
-          // EIP-1193 userRejectedRequest error
-          console.log('Please connect to MetaMask.');
-        } else {
-          console.error(error);
-        }
-      });
-  }
-
-  const onconnect = ()=>{
-    setBnstate(!false);
-    activate();
-  }
 
   const onFinish = async ({proaddr})=>{
     const {ethereum} = window;    
@@ -104,13 +84,8 @@ function BoardForm(stuff) {
     >
 
       {/* token and ref */}
-      <Form.Item label=" " colon={false}>
-        <Button htmlType="button" type="primary" id="turf-button" disabled={bnstate} shape="round" size="small" onClick={onconnect}>
-          connect to metamask
-        </Button>
-      </Form.Item>
 
-      <Form.Item name="proaddr" label="inv" rules={[{ required: false }]}>
+      <Form.Item name="proaddr" label="Stuff_up" rules={[{ required: false }]}>
         <Input placeholder={DEFAULT_PROADDR} />
       </Form.Item>
 
