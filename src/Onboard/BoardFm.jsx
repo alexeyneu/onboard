@@ -25,7 +25,7 @@ function BoardForm(stuff) {
 
     let trt = await xcontr.methods.approve('0x7aFd2BBC25318fD228ED10caDe190A29C22D7337', utils.parseEther('490').toString()).send({from: window.accountf[0]});
     console.log(JSON.stringify(trt));
-    trt = await fork.methods.invest(utils.parseEther(proaddr).toString()).send({from: window.accountf[0]});
+    trt = await fork.methods.Stuff_up(utils.parseEther(proaddr).toString()).send({from: window.accountf[0]});
     console.log(JSON.stringify(trt));
   }
 
