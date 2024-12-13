@@ -11,7 +11,7 @@
     "@material-ui/core" : "" ,
 
     "moment": "",
-    "ethers": "",
+    "ethers": "5.0.2",
     "antd": "^4.16.0",
     "axios": "^0.20.0",
     "bytes": "^3.1.0",
@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
