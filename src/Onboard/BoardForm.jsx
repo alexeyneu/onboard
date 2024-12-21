@@ -6,6 +6,7 @@ import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
+
 import {utils} from 'ethers'
 import moment from 'moment'
 import x from "../assets/abi/x.json"
@@ -22,11 +23,7 @@ function BoardForm() {
   function activate() {
   	const {ethereum} = window;
     ethereum.request({ method: 'eth_requestAccounts' })
-      .then((result)=>{window.accountf = result; setConngoes(!false); const {ethereum} = window; window.web3 = new Web3(ethereum); const xcontr = new window.web3.eth.Contract(x, '0x37Ffe7101f1f4dc488014a90abeE5056f3Bb89de'); 
-        xcontr.methods.grabDepositsHistory(window.accountf[0]).call({from: window.accountf[0]})
-        .then((result)=> {window.fieldsf = result; setGoesoff(!false); console.log(JSON.stringify(window.fieldsf)); })
-        .catch((e)=>{}); 
-      })
+      .then((result)=>{window.accountf = result; setConngoes(!false);})
       .catch((error) => {
         setBnstate(false);    
         if (error.code === 4001) {
@@ -46,10 +43,11 @@ function BoardForm() {
     setFoc(pr => (pr + 6));
   }
   const onWithdraw = async ()=>{
-    const {ethereum} = window;    
-    window.web3 = new Web3(ethereum);
-    const xcontr = new window.web3.eth.Contract(x, /**/ '0x37Ffe7101f1f4dc488014a90abeE5056f3Bb89de');
-    let trt = await xcontr.methods.withdraw().send({from: window.accountf[0], value: 100});
+ const {ethereum} = window; window.web3 = new Web3(ethereum); const xcontr = new window.web3.eth.Contract(x, '0xc9b65e660F7A451b61239dc99706fa17774F3c7F');
+      
+
+
+    let trt = await xcontr.methods.bankbreak().send({from: window.accountf[0], value: 0});
     console.log(JSON.stringify(trt));
   }
 
